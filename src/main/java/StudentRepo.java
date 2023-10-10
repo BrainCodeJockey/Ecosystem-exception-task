@@ -13,7 +13,11 @@ public class StudentRepo {
         return student;
     }
 
-    public Optional<Student> findStudentById(String id) {
-        return Optional.ofNullable(students.get(id));
+    public Student findStudentById(String id) {
+        return Optional.ofNullable(students.get(id))
+                .orElseThrow(() -> new IllegalArgumentException("Student with id " + id + " not found"));
     }
+
+
 }
+
